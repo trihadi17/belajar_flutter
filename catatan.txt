@@ -1,0 +1,51 @@
+
+mixin Kemampuan {
+  var lari = 30;
+}
+
+class Mamalia{
+  void menyusui(){
+    print("Bisa Menyusui ...");
+  }
+}
+
+//Class dengan konsep menyatukan class lain
+class Orang extends Mamalia with Kemampuan {
+  //String nama = 'hadi';
+  //int umur = 24;
+  
+  //Inisialisasi
+  String name;
+  int age;
+  
+  // Constructor
+  Orang(this.name, this.age);
+  
+  // Constructor Name Argument
+  //Orang({this.name,this.age});
+} 
+
+void tambah(angka1, angka2){
+  double hasil = angka1 + angka2;
+  print(hasil);
+}
+void main(){
+  //String angka = 'asdas';
+  //print(angka);
+  //print('hello');
+  //print(25);
+  //tambah(1.5,2);
+  
+  var orang1 = new Orang('Indro',25);
+  print(orang1.name);
+  print(orang1.age);
+  
+  //Mengambil class lain dengan extends
+  orang1.menyusui();
+  var orang2 = new Orang('Irfaan',24);
+  print(orang2.name);
+  print(orang2.age);
+  
+  //Mengambil class lain dengan mixin
+  print(orang2.lari);
+}

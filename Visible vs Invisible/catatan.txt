@@ -1,0 +1,66 @@
+Stack(
+            children: [
+              Container(
+                color: Colors.red,
+                height: 120,
+                width: 120,
+              ),
+              Container(
+                color: Colors.green,
+                height: 100,
+                width: 100,
+              ),
+              Container(
+                color: Colors.blue,
+                height: 80,
+                width: 80,
+              ),
+            ],
+          )),
+
+
+
+Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Container(
+                color: Colors.red,
+                height: 80,
+                width: 30,
+              ),
+              Container(
+                color: Colors.green,
+                height: 100,
+                width: 100,
+              ),
+              Container(
+                color: Colors.blue,
+                height: 70,
+                width: 120,
+              ),
+            ],
+          )
+
+
+Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Container(
+                color: Colors.red,
+                height: 30,
+                width: 80,
+              ),
+              Container(
+                color: Colors.green,
+                height: 100,
+                width: 100,
+              ),
+              Container(
+                color: Colors.blue,
+                height: 120,
+                width: 70,
+              ),
+            ],
+          )
