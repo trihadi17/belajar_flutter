@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +37,10 @@ class DetailPlayer extends StatelessWidget {
         child: Form(
           child: Column(
             children: [
-              ClipRRect(
+              //* Jika url gambar nya error / tidak ditemukan, akan ditambah handling errornya sebagai default
+              //* menggunakan pub.dev CachedNetworkImage
+
+              /*  ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: Container(
                   width: 150,
@@ -49,7 +53,27 @@ class DetailPlayer extends StatelessWidget {
                     ),
                   ),
                 ),
+              ), */
+
+              ClipRRect(
+                borderRadius: BorderRadius.circular(150),
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  child: CachedNetworkImage(
+                    fit: BoxFit.cover,
+                    imageUrl: imageController.text,
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Container(
+                      width: 50,
+                      height: 50,
+                      child: Image.network(
+                          'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'),
+                    ),
+                  ),
+                ),
               ),
+
               TextFormField(
                 autocorrect: false,
                 autofocus: true,

@@ -17,33 +17,48 @@ class AddPlayer extends StatelessWidget {
     //* Provider
     final players = Provider.of<Players>(context, listen: false);
 
+    //* Function
+    final VoidCallback addPlayer = () {
+      players
+          .addPlayer(
+        nameController.text,
+        positionController.text,
+        imageController.text,
+      ) //* then  = asynchronous (harus menambahkan future pada providers nya)
+          .then((value) {
+        //* Snack Bar
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Berhasil ditambahkan"),
+            duration: Duration(seconds: 2),
+          ),
+        );
+
+        //* Pop Layer
+        Navigator.pop(context);
+      }).catchError((error) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text("Telah Terjadi Error $error"),
+            content: Text('Tidak Dapat Menambahkan Player'),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('OKAY'))
+            ],
+          ),
+        );
+      });
+    };
+
     return Scaffold(
       appBar: AppBar(
         title: Text("ADD PLAYER"),
         actions: [
-          IconButton(
-            icon: Icon(Icons.save),
-            onPressed: () {
-              players
-                  .addPlayer(
-                nameController.text,
-                positionController.text,
-                imageController.text,
-              ) //* then  = asynchronous (harus menambahkan future pada providers nya)
-                  .then((value) {
-                //* Snack Bar
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text("Berhasil ditambahkan"),
-                    duration: Duration(seconds: 2),
-                  ),
-                );
-
-                //* Pop Layer
-                Navigator.pop(context);
-              });
-            },
-          ),
+          IconButton(icon: Icon(Icons.save), onPressed: addPlayer),
         ],
       ),
       body: Padding(
