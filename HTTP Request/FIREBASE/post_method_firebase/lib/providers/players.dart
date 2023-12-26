@@ -43,8 +43,8 @@ class Players with ChangeNotifier {
 
         //* then itu merupakan asynchronous. akan dijalankan setelah menjalankan synchronous
         .then((response) {
-      print(json.decode(response.body)["name"]);
-      print("${response.statusCode}");
+      //* print(json.decode(response.body)["name"]);
+      //* print("${response.statusCode}");
 
       //! ERROR HANDLING
       if (response.statusCode >= 200 && response.statusCode < 300) {
